@@ -1,0 +1,27 @@
+{
+  "name": "dev-docs-webhook-bc",
+  "version": "1.0.0",
+  "description": "An app that listens for callbacks from the BigCommerce webhooks service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikrdgz/dev-docs-webhook-bc.git"
+  },
+  "keywords": [
+    "bigcommerce",
+    "webhooks"
+  ],
+  "author": "Mikaela R",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikrdgz/dev-docs-webhook-bc/issues"
+  },
+  "homepage": "https://github.com/mikrdgz/dev-docs-webhook-bc#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
