@@ -14,7 +14,11 @@
   </header>
   <body>
     <div class="main">
-
+      <ul>
+      <% friends.forEach(function(friend) { %>
+              <li><%= friend.name %> </li>
+          <% }); %>
+        </ul>
     </div>
   </body>
 </html>
