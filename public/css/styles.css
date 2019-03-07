@@ -28,13 +28,24 @@ body {
   height: 500px;
   flex-flow: wrap;
   justify-content: center;
-  border: red solid 1px;
 }
 
 .main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background: whitesmoke;
   height: 75%;
   width: 50%;
-  border: pink solid 2px;
 
+}
+
+.main p {
+  line-height: 2rem;
+}
+
+.main h2 {
+  padding: 20px;
+  font-size: 3rem;
 }

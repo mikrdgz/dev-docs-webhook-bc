@@ -1,65 +1,58 @@
+//load express
+
 const express = require('express')
 const app = express()
+
+//allow assets to be accessed
 app.use(express.static('public'));
+
+//set view engine to Embedded Javascript Templates
 app.set('view engine', 'ejs')
+
+//used to parse response from POST into JSON
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-var router = express.Router();
-var jsonParser = bodyParser.json()
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-let friends = [
-    {
-      name: 'juvi'
-    },
-    {
-      name: 'laura'
-    },
-    {
-    name: 'theo'
-  }
+
+//create global array to store POST data
+let products = [
+
 ];
 
-
+//route for /webhooks destination
 app.get('/webhooks', function (req, res) {
-   // console.log('get the request');
-   // console.log(req.body.data);
-   // console.log('get the response');
-   // console.log(res);
-   console.log('gotten resposne');
-  res.render('home', {friends});
+
+   console.log('response');
+
+// template for home page and instatiating variable that contains POST data
+  res.render('home', {products});
 });
 
 
-//
-// app.post('/webhooks', function (req, res) {
-//       console.log(req.body)
-//       res.status(200).send(res.body);
-//
-//   })
-
-
+//route for capturing BigCommerce webhook callback
 app.post('/webhooks', function (req, res) {
-  console.log('post req data');
-  console.log(req.body.data);
-  let newFriend = { name : req.body.data.id };
-  friends.push(newFriend);
-  console.log(friends);
-  res.send(newFriend);
 
-  // const responsebody = res;
-  // const meow = 'theo';
-  // console.log(responsebody);
-  // res.render('home', {
-  //   responseBodyody: responsebody,
-  //   cat: meow
-  // }).status(200);
+//populate object inside route with contents from BigCommerce callback
+  let newProduct = {
+    id : req.body.data.id,
+    type: req.body.data.type,
+    hash: req.body.hash
+  };
+
+//add object to global array
+  products.push(newProduct);
+  res.send(newProduct);
 });
 
 
+// server
 app.listen(3000, function (err) {
+
+// check if server initiated
   console.log('we on');
   if (err) {
     throw err }
   })
+
+// TODO: catch duplicates due to WEBHOOKS-46?

@@ -14,11 +14,14 @@
   </header>
   <body>
     <div class="main">
-      <ul>
-      <% friends.forEach(function(friend) { %>
-              <li><%= friend.name %> </li>
+      <% products.forEach(function(product) { %>
+          <h2>Webhook dispatch</h2>
+              <p> Product ID: <%= product.id %>
+                <br>
+              Product Type: <%= product.type %>
+            </p>
           <% }); %>
-        </ul>
+
     </div>
   </body>
 </html>
