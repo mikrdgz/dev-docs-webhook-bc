@@ -37,7 +37,9 @@ app.post('/webhooks', function (req, res) {
   let newProduct = {
     id : req.body.data.id,
     type: req.body.data.type,
-    hash: req.body.hash
+    hash: req.body.hash,
+    store_id: req.body.store_id,
+    scope: req.body.scope
   };
 
 //add object to global array
