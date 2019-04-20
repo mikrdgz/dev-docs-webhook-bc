@@ -32,6 +32,10 @@ app.get('/webhooks', function (req, res) {
 
 //route for capturing BigCommerce webhook callback
 app.post('/webhooks', function (req, res) {
+ 
+ //send OK response
+ 
+  res.sendStatus(200);
 
 //populate object inside route with contents from BigCommerce callback
   let newProduct = {
